@@ -3,14 +3,27 @@ LIBRERÍAS
 """
 
 import random
-
+# import numpy
 
 """
 CLASES
 """
+
 class barco:
-    coord = {}
-    vida = 0
+    
+    def __init__(self):
+        self.coord = {}
+        self.vida = 0
+
+class jugador:
+
+    def __init__(self):
+        self.vidas = 10
+        self.flota = []
+        self.mapa = []
+        self.comprueba = []
+
+
 # Creamos dos matrices, M1 y M2, que corresponderán a los mapas de cada jugador
 M1 = M2 = [['O' for i in range(10)] for i in range(10)]
 
@@ -19,71 +32,71 @@ M1 = M2 = [['O' for i in range(10)] for i in range(10)]
 # las casillas ya visitadas
 C1 = C2 = [[0 for i in range(10)] for i in range(10)]
 
-class barco:
-
-    vida = 0
-
 
 # Creamos el mapa de juego. El parámetro i nos indica la longitud de eslora del barco,
 # mientras que x es un objeto clase que representa un barco.
 
-def dentro(a,b):
-    if 0 <= a < 10 and 0 <= b < 10:
+def dentro(x,y):
+    if 0 <= x < 10 and 0 <= y < 10:
         return True
     return False
 
 
 # Comprobamos si ninguna celda vecina está ocupada por un barco:  
-# Necesitamos diferenciar si el barco estará en posición vertical u horizontal para 
-# establecer los criterios en el momento de explorar las celdas vecinas
 
-# Caso barco vertical
-def vmira(M,a,b):
+# Para cada celda que ocupará nuestro barco, miramos ésta misma junto con sus 8 celdas vecinas
+def mira(M,x,y):
     for i in range(-1,2):
-            if dentro(a-1,b-i):
-                if M[a-1][b-i] != 'O':
-                    return False
-            if dentro(a,b-i):
-                if M[a][b-i] != 'O':
-                    return False
-            if dentro(a+1,b-i):
-                if M[a+1][b-i] != 'O':
-                    return False
+            for j in range(-1,2):
+                if dentro(x-j,y-i):
+                    if M[x-j][y-i] != 'O':
+                        return False
     return True
 
+# En este caso, caemos en cierta redundancia, ya que al avanzar
+# en las casillas candidatas a ser ocupadas por un mismo barco
+# analizamos repetidamente algunas que se solapan.
+# Como todavía no estamos modificando el mapa, esto no crea ningún conflico,
+# por lo que sacrificamos un poco de eficiencia computacional a cambio de limpieza de código
 
+
+# Función descartada debido a redundancia
+"""
 # Caso barco horizontal
-def hmira(M,a,b):
+def hmira(M,x,y):
     for i in range(-1,2):
-        if dentro(a-i,b-1):
-            if M[a-1][b-i] != 'O':
+        if dentro(x-i,y-1):
+            if M[x-i][y-1] != 'O':
                 return False
-        if dentro(a-i,b):
-            if M[a][b-i] != 'O':
+        if dentro(x-i,y):
+            if M[x-i][y] != 'O':
                 return False
-        if dentro(a-i,b+1):
-            if M[a-i][b+1] != 'O':
+        if dentro(x-i,y+1):
+            if M[x-i][y+1] != 'O':
                 return False
     return True
+"""
 
-
-
+# En esta función comprobaremos si las celdas que se asignarán al barco
+# cumplen los requisitos establecidos:
+# 1. Ninguna de ellas está ocupada por otro barco
+# 2. Ninguna celda vecina está ocupada por otro barco
 def valido(M,x,y,l,v):
-    a = x
-    b = y
+    # Analizaremos celda a celda.
+    # Si el barco está en posición vertical, modificaremos la coordenada x 
     if v == True:
         for i in range(0,l):
-            if not vmira(M,a,b):
+            if not mira(M,x+i,y):
                 return False
-        
+    # Si el barco está en posición horizontal, modificaremos la coordenada y    
     if v == False:
         for i in range(0,l):
-            if not hmira(M,a,b):
+            if not mira(M,x,y+i):
                 return False
         
     return True
 
-def set_mapa(M, l, b):
+def set_mapa(M, l, flota):
     # el parámetro v nos indica si el barco que estamos colocando estará en posición vertical u horizontal
     v = random.randint(0,1)
     
@@ -91,38 +104,72 @@ def set_mapa(M, l, b):
     # Si es vertical, la coordenada y (eje vertical) como máximo podrá ser 9 - l + 1, para evitar salirnos del mapa 
     if v == 1:
         while True:
-            x = random.randint(0,9)
-            y = random.randint(0,9-l+1)
+            x = random.randint(0,9-l+1)
+            y = random.randint(0,9)
+            # En esta función comprobaremos si para la posición inicial establecida, 
+            # no hay ninguna casilla conflictiva antes de proceder a asignar estas 
+            # posiciones a nuestro barco definitivamente.
+            # Si valido detectara alguna casilla conflictiva, se volverían a generar 
+            # dos coordenadas aleatorias hasta dar con una combinación factible.
             if valido(M,x,y,l,v):
                 break
+        # Una vez validadas las cordenadas (x,y), procedemos a:
+        # 1. Ubicar el barco en nuestro mapa
+        # 2. Añadir los atributos de la clase barco a nuestra lista
         for i in range(0,l):
-            M[x][y+i] = 'B'
-            b.coord[str(x, int(y+i))] = False
+            M[x+i][y] = 'B'
+            t = (x+i,y)
+            flota[-1].coord[t] = False
+        flota[-1].vida = len(flota[-1].coord.keys())
+            #b.coord[str(x, int(y+i))] = False
     # Lo mismo ocurre si el barco está en posición horizontal, 
     # respectivamente con la variable x (eje horizontal)
     else:
         while True:
-            x = random.randint(0,9-l+1)
-            y = random.randint(0,9)
+            x = random.randint(0,9)
+            y = random.randint(0,9-l+1)
             if valido(M, x,y,l,v):
                 break
         for i in range(0,l):
-            M[x+i][y] = 'B'
-            b.coord[str(int(x+i),y)] = False
-    return M, b
-#### DARLE UNA VUELTA!
-flota = []
+            M[x][y+i] = 'B'
+            t = (x,y+i)
+            flota[-1].coord[t] = False
+        flota[-1].vida = len(flota[-1].coord.keys())
+
+
+# Creamos una lista vacía, donde cada elemento sera un objeto clase barco
+flota1 = []
+# Crearemos uno por uno todos los barcos, por este motivo, los iremos implementando en el tablero según su longitud
+# de eslora l
 for l in range(1,5):
-    for j in range(0,4-l):
-        b = barco()
-        M1, b = set_mapa(M1,l,b)
-        flota.append(b)
+    # Cuanta menor sea la longitud de eslora, mayor será el número de barcos que implementaremos
+    # Esto lo contabilizamos mediante el iterador j que va desde 0 a 5-l
+    # En caso de l = 1, 4 barcos, l = 2, 3 barcos, etc. 
+    for j in range(0,5-l):
+        # Inicializamos un objeto barco y lo añadimos a nuestra lista
+        b = barco()      
+        flota1.append(b)
+        # Ubicamos nuestro barco en el mapa del jugador:
+        set_mapa(M1,l,flota1)
 
-b = barco()
-b.coord
+        # Implementamos este sistema de control que nos permite comprobar que
+        # el programa se ejecuta correctamente 
+        # una vez testeado, conviene comentar este bloque de código para 
+        # disponer de una mejor presentación por pantalla
+        print(f"Barco de longitud {l} número {j}:")
+        for i in range(len(M1)):
+            for k in range(len(M1[i])):
+                print(M1[i][k], end = " ")
+            print("")
 
-print(flota)
+for i in flota1:
+    print(i.vida, i.coord.items())
+
+# print(flota)
 for i in range(len(M1)):
     for j in range(len(M1[i])):
         print(M1[i][j], end = " ")
     print("")
+
+
+
