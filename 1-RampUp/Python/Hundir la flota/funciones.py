@@ -1,11 +1,19 @@
-import tablero
-import jugada
-
 
 def dentro(x,y):
     if 0 <= x < 10 and 0 <= y < 10:
         return True
     return False
+
+def pinta(C,b):
+    for i in b.coord.keys():
+        x = i[0]
+        y = i[1]
+        for j in range(-1,2):
+            for k in range(-1,2):
+                if dentro(x-j,y-k):
+                    C[x-j][y-k] != "X"
+    return C
+                
 
 # Función reservada para las jugadas.
 # Comprueba si las coordenadas de la tirada son válidas y si ya las hemos visitado
