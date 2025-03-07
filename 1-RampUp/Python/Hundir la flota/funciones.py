@@ -1,3 +1,4 @@
+import random
 
 def dentro(x,y):
     if 0 <= x < 10 and 0 <= y < 10:
@@ -11,7 +12,7 @@ def pinta(C,b):
         for j in range(-1,2):
             for k in range(-1,2):
                 if dentro(x-j,y-k):
-                    C[x-j][y-k] != "X"
+                    C[x-j][y-k] = "X"
     return C
                 
 

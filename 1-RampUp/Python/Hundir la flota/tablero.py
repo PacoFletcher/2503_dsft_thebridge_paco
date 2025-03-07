@@ -3,7 +3,7 @@ LIBRERÍAS
 """
 
 import random
-# import numpy
+import funciones
 
 """
 CLASES
@@ -161,7 +161,7 @@ for l in range(1,5):
         b = barco()      
         flota1.append(b)
         # Ubicamos nuestro barco en el mapa del jugador:
-        set_mapa(M1,l,flota1)
+        funciones.set_mapa(M1,l,flota1)
 
         # Implementamos este sistema de control que nos permite comprobar que
         # el programa se ejecuta correctamente 
@@ -198,7 +198,7 @@ for l in range(1,5):
         b = barco()      
         flota2.append(b)
         # Ubicamos nuestro barco en el mapa del jugador:
-        set_mapa(M2,l,flota2)
+        funciones.set_mapa(M2,l,flota2)
 
         # Implementamos este sistema de control que nos permite comprobar que
         # el programa se ejecuta correctamente 
@@ -213,7 +213,6 @@ for l in range(1,5):
 
 # Como esta información corresponde al segundo jugador (la máquina)
 # no lo mostraremos en la versión definitiva
-
 for i in flota2:
     print(i.vida, i.coord.items())
 

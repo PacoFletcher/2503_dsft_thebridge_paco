@@ -1,0 +1,13 @@
+BLOG PARA ANOTAR IDEAS QUE NO SE HAN IMPLEMENTADO POR EL MOTIVO QUE SEA PERO QUE MEJORARÍAN LA EXPERIENCIA DE JUEGO.
+
+1. Crear una función que, una vez has tocado un barco pero no hundido, a partir de la información de la matriz C del jugador sea capaz de determinar si el barco se encuentra en posición vertical u horizontal, y así pintar las casillas del entorno para facilitar el desempeño del usuario.
+	1.1 Miraría a izquierda y derecha de la casilla y arriba y abajo de la misma.
+	1.2 Caso 1: Si detecta Agua a ambos lados, el barco está en posición vertical.
+		También puede ocurrir que a uno de los dos lados detecte una T, por lo que concluiría que está en posición horizontal.
+	1.3 Complementariamente, si detecta Agua arriba y abajo, el barco está en posición horizontal.
+		También puede ocurrir que arriba o abajo detecte una T, por lo que concluiría que está en posición vertical
+	1.4 Se pintaría el entorno (x,y +- 1) o (x +- 1,y), respectivamente, ya que todavía no podemos determinar cuáles son los extremos.
+
+1.BONUS. Si se está siguiendo un camino y se detecta agua, esta casilla sería un extremo, por lo que se podría pintar todo el entorno de la 	celda.
+
+Meter figuras explicativas de la casuística.
