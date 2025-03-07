@@ -221,3 +221,5 @@ for i in range(len(M2)):
     for j in range(len(M2[i])):
         print(M2[i][j], end = " ")
     print("")
+
+funciones.imprime_tablero(M2)

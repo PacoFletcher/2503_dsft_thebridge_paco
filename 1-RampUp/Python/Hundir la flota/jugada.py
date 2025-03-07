@@ -3,7 +3,7 @@ import tablero
 import funciones
 
 turno = 0
-tirada = 0
+tirada = 1
 vidas1 = 20
 vidas2 = 20
 
@@ -23,16 +23,23 @@ flota2 = tablero.flota2
 
 while vidas1 > 0 and vidas2 > 0:
     print(f"Tirada número {tirada}, turno del jugador {turno%2 + 1}")
+    # ESTA FUNCIÓN SE IMPLEMENTARÁ EN LA VERSIÓN DEFINITIVA Y COMPRENDERÁ 
+    # EL CÓDIGO QUE ESTÁ DENTRO DEL BUCLE
+    ###############################
+    # jugada(turno)
+    ###############################
+
     if turno % 2 == 0:
         # funciones.turno1()
         acierto = True
         while acierto and vidas2 > 0:
             # Antes de cada tirada, imprimimos por pantalla la matriz 
             # que almacena los resultados de las tiradas para facilitar la jugabilidad
-            for i in range(len(C1)):
+            funciones.imprime_tablero(C1)
+            """for i in range(len(C1)):
                 for j in range(len(C1[i])):
                     print(C1[i][j], end = " ")
-                print("")
+                print("")"""
             x = int(input("Introduce la primera coordenada de la tirada:"))
             y = int(input("Introduce la segunda coordenada de la tirada:"))
             if funciones.dentro(x,y) and C1[x][y] == 0:
@@ -53,7 +60,8 @@ while vidas1 > 0 and vidas2 > 0:
                             aux = i
                     if flota2[aux].vida == 0:
                         print(f"Coordenada ({x},{y}): Tocado y hundido. Vuelve a tirar")
-                        C1 = funciones.pinta(C1,flota2[aux])
+                        C = C1
+                        C1 = funciones.pinta(C,flota2[aux])
                     else:
                         print(f"Coordenada ({x},{y}): Tocado. Vuelve a tirar")
                     vidas2 -= 1
@@ -108,10 +116,10 @@ while vidas1 > 0 and vidas2 > 0:
                             aux = i
                     if flota1[aux].vida == 0:
                         print(f"Coordenada ({x},{y}): Tocado y hundido. Vuelve a tirar")
-                        C2 = funciones.pinta(C1,flota2[aux])
+                        C = C2
+                        C2 = funciones.pinta(C,flota2[aux])
                     else:
                         print(f"Coordenada ({x},{y}): Tocado. Vuelve a tirar")
-                    vidas2 -= 1
             else:
                 print("Fuera del tablero o ya visitada, prueba otra combinación")
 if vidas1 == 0:

@@ -5,6 +5,27 @@ def dentro(x,y):
         return True
     return False
 
+
+def imprime_tablero(C):
+    for i in range(-1,10):
+        if i == -1:
+            print (" ", end = " | ")
+        else:
+            print(i, end = " | ")
+    print("")
+    print("-"*43)
+    for i in range(len(C)):
+        for j in range(len(C[i])+1):
+            if j == 0:
+                print(i, end  = " | ")
+            else:
+                print(C[i][j-1], end = " | ")
+        print("")
+        print("-"*43)
+
+
+
+
 def pinta(C,b):
     for i in b.coord.keys():
         x = i[0]

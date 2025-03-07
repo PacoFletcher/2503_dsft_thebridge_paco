@@ -1,4 +1,4 @@
-BLOG PARA ANOTAR IDEAS QUE NO SE HAN IMPLEMENTADO POR EL MOTIVO QUE SEA PERO QUE MEJORARÍAN LA EXPERIENCIA DE JUEGO.
+BLOG PARA ANOTAR IDEAS QUE NO SE HAN IMPLEMENTADO POR EL MOTIVO QUE SEA PERO QUE MEJORARÍAN LA EXPERIENCIA DE JUEGO Y/O RENDIMIENTO DEL PROGRAMA.
 
 1. Crear una función que, una vez has tocado un barco pero no hundido, a partir de la información de la matriz C del jugador sea capaz de determinar si el barco se encuentra en posición vertical u horizontal, y así pintar las casillas del entorno para facilitar el desempeño del usuario.
 	1.1 Miraría a izquierda y derecha de la casilla y arriba y abajo de la misma.
@@ -11,3 +11,10 @@ BLOG PARA ANOTAR IDEAS QUE NO SE HAN IMPLEMENTADO POR EL MOTIVO QUE SEA PERO QUE
 1.BONUS. Si se está siguiendo un camino y se detecta agua, esta casilla sería un extremo, por lo que se podría pintar todo el entorno de la 	celda.
 
 Meter figuras explicativas de la casuística.
+
+2. ¿Se puede hacer con menos matrices?
+	2.1 Por supuesto, bastaría con crear una sola matriz de tamaño 20x20, donde la submatriz M[0:0][0:9] correspondería al mapa del 		jugador 1, M[0:9][10:19] a las comprobaciones del jugador 1, M[10:19][0:9] al mapa del jugador 2 y M[10:19][10:19] a las 		comprobaciones del jugador 2.
+	2.2 Esto modificaría el modo de trabajar del programa, simplemente trabajaría en módulo 10, y en función del jugador que esté 			jugando y la acción que queramos realizar, simplemente tendríamos que añadir 10 unidades a la coordenada fila y/o columna 
+		para acceder a la información deseada.
+	2.3 Una opción sería, en bucle jugada, simplemente trabajar con fila = x+ 10*jugador ya que jugador es una variable en base 2 y 		columna = y + 10*comprueba, donde comprueba también sería un booleano para diferenciar si se accede al mapa o a la 			comprobación.
+2.BONUS. Si este método se implementa correctamente se solucionarían problemas a la hora de enviar las matrices a otra función, ya que 	estas se pasan por referencia y se duplican valores en matrices independientes.
