@@ -189,7 +189,7 @@ M = [['O' for i in range(10)] for i in range(10)]
 flota2 = []
 # Crearemos uno por uno todos los barcos, por este motivo, los iremos implementando en el tablero según su longitud
 # de eslora l
-for l in range(1,5):
+for l in range(4,0,-1):
     # Cuanta menor sea la longitud de eslora, mayor será el número de barcos que implementaremos
     # Esto lo contabilizamos mediante el iterador j que va desde 0 a 5-l
     # En caso de l = 1, 4 barcos, l = 2, 3 barcos, etc. 

@@ -1,18 +1,19 @@
 import random
 import tablero
 import funciones
+import variables
 
-turno = 0
-tirada = 1
-vidas1 = 20
-vidas2 = 20
+turno = variables.turno
+tirada = variables.tirada
+vidas1 = variables.vidas1
+vidas2 = variables.vidas2
 
-M1 = tablero.M1
-M2 = tablero.M2
-C1 = tablero.C1
-C2 = tablero.C2
-flota1 = tablero.flota1
-flota2 = tablero.flota2
+M1 = variables.M1
+M2 = variables.M2
+C1 = variables.C1
+C2 = variables.C2
+flota1 = variables.flota1
+flota2 = variables.flota2
 
 
 ## ACTUALMENTE ESTOY PULIENDO LAS TIRADAS DE LOS JUGADORES
@@ -21,7 +22,7 @@ flota2 = tablero.flota2
 # PARECE QUE EL DUMMY FUNCIONA BIEN
 
 
-while vidas1 > 0 and vidas2 > 0:
+while vidas[0] > 0 and vidas[1] > 0:
     print(f"Tirada número {tirada}, turno del jugador {turno%2 + 1}")
     # ESTA FUNCIÓN SE IMPLEMENTARÁ EN LA VERSIÓN DEFINITIVA Y COMPRENDERÁ 
     # EL CÓDIGO QUE ESTÁ DENTRO DEL BUCLE
@@ -32,7 +33,7 @@ while vidas1 > 0 and vidas2 > 0:
     if turno % 2 == 0:
         # funciones.turno1()
         acierto = True
-        while acierto and vidas2 > 0:
+        while acierto and vidas[1] > 0:
             # Antes de cada tirada, imprimimos por pantalla la matriz 
             # que almacena los resultados de las tiradas para facilitar la jugabilidad
             funciones.imprime_tablero(C1)
@@ -40,8 +41,10 @@ while vidas1 > 0 and vidas2 > 0:
                 for j in range(len(C1[i])):
                     print(C1[i][j], end = " ")
                 print("")"""
+            # funciones.tira1(turno)
             x = int(input("Introduce la primera coordenada de la tirada:"))
             y = int(input("Introduce la segunda coordenada de la tirada:"))
+            
             if funciones.dentro(x,y) and C1[x][y] == 0:
                 tirada += 1
                 if M2[x][y] == 'O':
@@ -64,7 +67,7 @@ while vidas1 > 0 and vidas2 > 0:
                         C1 = funciones.pinta(C,flota2[aux])
                     else:
                         print(f"Coordenada ({x},{y}): Tocado. Vuelve a tirar")
-                    vidas2 -= 1
+                    vidas[1] -= 1
             else:
                 print(f"Coordenada ({x},{y}) fuera del tablero o ya visitada, prueba otra combinación") 
     else:
@@ -89,11 +92,13 @@ while vidas1 > 0 and vidas2 > 0:
                 funciones.turno23() 
         """
         acierto = True
-        while acierto and vidas1 > 0:
-            for i in range(len(C2)):
+        futuro = []
+        while acierto and vidas[0] > 0:
+            funciones.imprime_tablero(C2)
+            """for i in range(len(C2)):
                 for j in range(len(C2[i])):
                     print(C2[i][j], end = " ")
-                print("")
+                print("")"""
             # Al ser el turno de la máquina, la tirada será aleatoria
             x = random.randint(0,9)
             y = random.randint(0,9)
@@ -106,7 +111,7 @@ while vidas1 > 0 and vidas2 > 0:
                     acierto = False
                 else:
                     C2[x][y] = 'T'
-                    vidas1 -= 1
+                    vidas[0] -= 1
                     t = (x,y)
                     aux = 0
                     for i in range(len(flota1)):

@@ -23,8 +23,96 @@ def imprime_tablero(C):
         print("")
         print("-"*43)
 
+def disparo(x,y,turno):
+    if funciones.dentro(x,y) and C1[x][y] == 0:
+        tirada += 1
+        if M2[x][y] == 'O':
+            C1[x][y] = 'A'
+            print(f"Coordenada ({x},{y}): Agua. Turno del otro jugador")
+            turno += 1
+            acierto = False
+        else:
+            C1[x][y] = 'T'
+            t = (x,y)
+            aux = 0
+            for i in range(len(flota2)):
+                if t in flota2[i].coord.keys():
+                    flota2[i].coord[t] = True
+                    flota2[i].vida -= 1
+                    aux = i
+            if flota2[aux].vida == 0:
+                print(f"Coordenada ({x},{y}): Tocado y hundido. Vuelve a tirar")
+                C = C1
+                C1 = funciones.pinta(C,flota2[aux])
+            else:
+                print(f"Coordenada ({x},{y}): Tocado. Vuelve a tirar")
+            vidas[(turno+1)%2] -= 1
+    else:
+        print(f"Coordenada ({x},{y}) fuera del tablero o ya visitada, prueba otra combinación")
+        return turno
+
+def tira1(turno):
+    x = int(input("Introduce la primera coordenada de la tirada:"))
+    y = int(input("Introduce la segunda coordenada de la tirada:"))
+    dispara(x,y,turno)
+    if funciones.dentro(x,y) and C1[x][y] == 0:
+        tirada += 1
+        if M2[x][y] == 'O':
+            C1[x][y] = 'A'
+            print(f"Coordenada ({x},{y}): Agua. Turno del otro jugador")
+            turno += 1
+            acierto = False
+        else:
+            C1[x][y] = 'T'
+            t = (x,y)
+            aux = 0
+            for i in range(len(flota2)):
+                if t in flota2[i].coord.keys():
+                    flota2[i].coord[t] = True
+                    flota2[i].vida -= 1
+                    aux = i
+            if flota2[aux].vida == 0:
+                print(f"Coordenada ({x},{y}): Tocado y hundido. Vuelve a tirar")
+                C = C1
+                C1 = funciones.pinta(C,flota2[aux])
+            else:
+                print(f"Coordenada ({x},{y}): Tocado. Vuelve a tirar")
+            vidas2 -= 1
+    else:
+        print(f"Coordenada ({x},{y}) fuera del tablero o ya visitada, prueba otra combinación")
 
 
+### Aquí irán las diferentes dificultades de la máquina:
+
+
+### (Dummy) Todas las tiradas serán aleatorias
+"""
+def dif_0(C):
+
+"""
+### (Nivel 1) Las tiradas serán aleatorias, pero en caso de tocar
+### un barco, las siguientes tiradas las hará en el entorno de la casilla
+### hasta hundirlo 
+"""
+def dif_1(C):
+
+"""
+
+### (Nivel 2) Similar al nivel 1, sólo que las próximas tiradas sólo las efectuará si sabe que hay un barco.
+### Es decir, si toca un barco, en el mismo turno lo hundirá.
+
+"""
+def dif_2(C):
+
+"""
+
+### (Nivel 3) Nivel (casi) imposible.
+### La máquina accede a nuestro vector flota, por lo que en un solo turno hundirá todos nuestros barcos
+
+"""
+def dif_3(C):
+
+"""
 
 def pinta(C,b):
     for i in b.coord.keys():
