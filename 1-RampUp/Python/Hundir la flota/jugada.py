@@ -5,16 +5,11 @@ import variables
 
 turno = variables.turno
 tirada = variables.tirada
-vidas1 = variables.vidas1
-vidas2 = variables.vidas2
+vidas = variables.vidas
 
-M1 = variables.M1
-M2 = variables.M2
-C1 = variables.C1
-C2 = variables.C2
-flota1 = variables.flota1
-flota2 = variables.flota2
-
+M = variables.M
+C = variables.C
+F = variables.F
 
 ## ACTUALMENTE ESTOY PULIENDO LAS TIRADAS DE LOS JUGADORES
 # PROBLEMAS CON LA FUNCIÓN PINTA
@@ -29,19 +24,22 @@ while vidas[0] > 0 and vidas[1] > 0:
     ###############################
     # jugada(turno)
     ###############################
-
-    if turno % 2 == 0:
+    turno = turno%2
+    if turno == 0:
         # funciones.turno1()
         acierto = True
         while acierto and vidas[1] > 0:
             # Antes de cada tirada, imprimimos por pantalla la matriz 
             # que almacena los resultados de las tiradas para facilitar la jugabilidad
-            funciones.imprime_tablero(C1)
+            funciones.imprime_tablero(C[turno])
+            
             """for i in range(len(C1)):
                 for j in range(len(C1[i])):
                     print(C1[i][j], end = " ")
                 print("")"""
-            # funciones.tira1(turno)
+            turno, acierto =  funciones.tira1(M,C,F, turno)
+            tirada += 1
+            """
             x = int(input("Introduce la primera coordenada de la tirada:"))
             y = int(input("Introduce la segunda coordenada de la tirada:"))
             
@@ -69,7 +67,8 @@ while vidas[0] > 0 and vidas[1] > 0:
                         print(f"Coordenada ({x},{y}): Tocado. Vuelve a tirar")
                     vidas[1] -= 1
             else:
-                print(f"Coordenada ({x},{y}) fuera del tablero o ya visitada, prueba otra combinación") 
+                print(f"Coordenada ({x},{y}) fuera del tablero o ya visitada, prueba otra combinación")
+    """ 
     else:
         """
         match dif:
@@ -94,7 +93,7 @@ while vidas[0] > 0 and vidas[1] > 0:
         acierto = True
         futuro = []
         while acierto and vidas[0] > 0:
-            funciones.imprime_tablero(C2)
+            funciones.imprime_tablero(C[turno])
             """for i in range(len(C2)):
                 for j in range(len(C2[i])):
                     print(C2[i][j], end = " ")
@@ -102,27 +101,26 @@ while vidas[0] > 0 and vidas[1] > 0:
             # Al ser el turno de la máquina, la tirada será aleatoria
             x = random.randint(0,9)
             y = random.randint(0,9)
-            if funciones.dentro(x,y) and C2[x][y] == 0:
+            if funciones.dentro(x,y) and C[turno][x][y] == 0:
                 tirada += 1
-                if M1[x][y] == 'O':
-                    C2[x][y] = 'A'
+                if M[(turno+1)%2][x][y] == 'O':
+                    C[turno][x][y] = 'A'
                     print(f"Coordenada ({x},{y}): Agua. Turno del otro jugador")
                     turno += 1
                     acierto = False
                 else:
-                    C2[x][y] = 'T'
+                    C[turno][x][y] = 'T'
                     vidas[0] -= 1
                     t = (x,y)
                     aux = 0
-                    for i in range(len(flota1)):
-                        if t in flota1[i].coord.keys():
-                            flota1[i].coord[t] = True
-                            flota1[i].vida -= 1
+                    for i in range(len(flota[turno])):
+                        if t in flota[(turno+1)%2][i].coord.keys():
+                            flota[(turno+1)%2][i].coord[t] = True
+                            flota[(turno+1)%2][i].vida -= 1
                             aux = i
-                    if flota1[aux].vida == 0:
+                    if flota[(turno+1)%2][aux].vida == 0:
                         print(f"Coordenada ({x},{y}): Tocado y hundido. Vuelve a tirar")
-                        C = C2
-                        C2 = funciones.pinta(C,flota2[aux])
+                        C[turno] = funciones.pinta(C,flota2[aux])
                     else:
                         print(f"Coordenada ({x},{y}): Tocado. Vuelve a tirar")
             else:

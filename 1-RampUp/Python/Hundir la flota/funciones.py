@@ -1,4 +1,15 @@
 import random
+import variables
+"""
+turno = variables.turno
+tirada = variables.tirada
+vidas = variables.vidas
+
+M = variables.M
+C = variables.C
+F = variables.F
+
+"""
 
 def dentro(x,y):
     if 0 <= x < 10 and 0 <= y < 10:
@@ -23,38 +34,42 @@ def imprime_tablero(C):
         print("")
         print("-"*43)
 
-def disparo(x,y,turno):
-    if funciones.dentro(x,y) and C1[x][y] == 0:
-        tirada += 1
-        if M2[x][y] == 'O':
-            C1[x][y] = 'A'
+
+def disparo(M,C,F,x,y,turno):
+    t = (turno+1)%2
+    if dentro(x,y) and C[turno][x][y] == 0:
+        if M[t][x][y] == 'O':
+            C[turno][x][y] = 'A'
             print(f"Coordenada ({x},{y}): Agua. Turno del otro jugador")
             turno += 1
             acierto = False
+            return turno, acierto
         else:
-            C1[x][y] = 'T'
-            t = (x,y)
+            C[turno][x][y] = 'T'
+            k = (x,y)
             aux = 0
-            for i in range(len(flota2)):
-                if t in flota2[i].coord.keys():
-                    flota2[i].coord[t] = True
-                    flota2[i].vida -= 1
+            print("El valor t es: ", t)
+            for i in range(len(F[t])):
+                if k in F[t][i].coord.keys():
+                    F[t][i].coord[k] = True
+                    F[t][i].vida -= 1
                     aux = i
-            if flota2[aux].vida == 0:
+            if F[t][aux].vida == 0:
                 print(f"Coordenada ({x},{y}): Tocado y hundido. Vuelve a tirar")
-                C = C1
-                C1 = funciones.pinta(C,flota2[aux])
+                
+                C[turno] = pinta(C,F[t][aux])
             else:
                 print(f"Coordenada ({x},{y}): Tocado. Vuelve a tirar")
-            vidas[(turno+1)%2] -= 1
+            vidas[t] -= 1
     else:
         print(f"Coordenada ({x},{y}) fuera del tablero o ya visitada, prueba otra combinación")
-        return turno
 
-def tira1(turno):
+def tira1(M,C,F,turno):
     x = int(input("Introduce la primera coordenada de la tirada:"))
     y = int(input("Introduce la segunda coordenada de la tirada:"))
-    dispara(x,y,turno)
+    turno, acierto = disparo(M,C,F,x,y,turno) 
+    return turno, acierto
+    """
     if funciones.dentro(x,y) and C1[x][y] == 0:
         tirada += 1
         if M2[x][y] == 'O':
@@ -80,7 +95,7 @@ def tira1(turno):
             vidas2 -= 1
     else:
         print(f"Coordenada ({x},{y}) fuera del tablero o ya visitada, prueba otra combinación")
-
+    """
 
 ### Aquí irán las diferentes dificultades de la máquina:
 
