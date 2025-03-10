@@ -282,3 +282,5 @@ def set_mapa(M, l, flota):
             t = (x,y+i)
             flota[-1].coord[t] = False
         flota[-1].vida = len(flota[-1].coord.keys())
+
+
