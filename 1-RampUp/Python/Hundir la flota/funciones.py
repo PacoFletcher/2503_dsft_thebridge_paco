@@ -159,14 +159,15 @@ def dif_2(M,C,F,vidas, turno, sec, futuro):
 ### (Nivel 3) Nivel (casi) imposible.
 ### La máquina accede a nuestro vector flota, por lo que en un solo turno hundirá todos nuestros barcos
 
-"""
 def dif3(M,C,F,vidas,turno,tiradas):
-    x = tiradas[-1][0]
-    y = tiradas[-1][1]
-    tiradas.pop()
-    turno, acierto = disparo(M,C,F,,vidas,x,y,turno)
-    return turno, acierto
-"""
+    for i in F[0]:
+        for j in i.coord:
+            if i[j] == False:
+                x = i[j][0]
+                y = i[j][1]
+                turno, acierto = disparo(M,C,F,vidas,x,y,turno)
+                return turno, acierto
+    return turno, True
 
 def pinta(C, turno,b):
     for i in b.coord.keys():
