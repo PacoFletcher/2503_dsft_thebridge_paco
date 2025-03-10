@@ -24,7 +24,7 @@ def dentro(x,y):
     return False
 
 
-def imprime_tablero(C):
+def imprime_tablero(A):
     for i in range(-1,10):
         if i == -1:
             print (" ", end = " | ")
@@ -32,12 +32,12 @@ def imprime_tablero(C):
             print(i, end = " | ")
     print("")
     print("-"*43)
-    for i in range(len(C)):
-        for j in range(len(C[i])+1):
+    for i in range(len(A)):
+        for j in range(len(A[i])+1):
             if j == 0:
                 print(i, end  = " | ")
             else:
-                print(C[i][j-1], end = " | ")
+                print(A[i][j-1], end = " | ")
         print("")
         print("-"*43)
 
@@ -74,8 +74,8 @@ def disparo(M,C,F,vidas,x,y,turno):
 def tira1(M,C,F,vidas,turno):
     ok = False
     while not ok:
-        x = input("Introduce la primera coordenada de la tirada:")
-        y = input("Introduce la segunda coordenada de la tirada:")
+        x = input("Introduce la coordenada fila:")
+        y = input("Introduce la coordenada columna:")
         if entero(x) and entero(y):
             ok = True
         else: 
@@ -159,15 +159,15 @@ def dif_2(M,C,F,vidas, turno, sec, futuro):
 ### (Nivel 3) Nivel (casi) imposible.
 ### La máquina accede a nuestro vector flota, por lo que en un solo turno hundirá todos nuestros barcos
 
-def dif3(M,C,F,vidas,turno,tiradas):
+def dif3(M,C,F,vidas,turno):
+    
     for i in F[0]:
-        for j in i.coord:
-            if i[j] == False:
-                x = i[j][0]
-                y = i[j][1]
+        for j in i.coord.keys():
+            if i.coord[j] == False:
+                x = j[0]
+                y = j[1]
                 turno, acierto = disparo(M,C,F,vidas,x,y,turno)
                 return turno, acierto
-    return turno, True
 
 def pinta(C, turno,b):
     for i in b.coord.keys():
@@ -177,8 +177,7 @@ def pinta(C, turno,b):
             for k in range(-1,2):
                 if dentro(x-j,y-k):
                     C[turno][x-j][y-k] = "X"
-    if turno == 1:
-        return False
+    return C[turno]
                 
 
 # Función reservada para las jugadas.

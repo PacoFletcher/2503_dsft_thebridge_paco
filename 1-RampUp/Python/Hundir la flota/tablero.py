@@ -35,7 +35,7 @@ M2 = [['O' for i in range(10)] for i in range(10)]
 C1 = [[0 for i in range(10)] for i in range(10)]
 C2 = [[0 for i in range(10)] for i in range(10)]
 
-
+"""
 # Creamos el mapa de juego. El parámetro i nos indica la longitud de eslora del barco,
 # mientras que x es un objeto clase que representa un barco.
 
@@ -63,7 +63,7 @@ def mira(M,x,y):
                     if M[x-j][y-i] != 'O':
                         return False
     return True
-
+"""
 # En este caso, caemos en cierta redundancia, ya que al avanzar
 # en las casillas candidatas a ser ocupadas por un mismo barco
 # analizamos repetidamente algunas que se solapan.
@@ -87,7 +87,7 @@ def hmira(M,x,y):
                 return False
     return True
 """
-
+"""
 # En esta función comprobaremos si las celdas que se asignarán al barco
 # cumplen los requisitos establecidos:
 # 1. Ninguna de ellas está ocupada por otro barco
@@ -146,6 +146,7 @@ def set_mapa(M, l, flota):
             t = (x,y+i)
             flota[-1].coord[t] = False
         flota[-1].vida = len(flota[-1].coord.keys())
+        """
 
 
 # Creamos una lista vacía, donde cada elemento sera un objeto clase barco
@@ -183,7 +184,7 @@ for i in range(len(M1)):
     print("")
 
 # Reinicializamos la matriz auxiliar para completar el segundo mapa
-M = [['O' for i in range(10)] for i in range(10)]
+# A = [['O' for i in range(10)] for i in range(10)]
 
 # Creamos una lista vacía, donde cada elemento sera un objeto clase barco
 flota2 = []

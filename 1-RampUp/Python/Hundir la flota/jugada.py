@@ -3,20 +3,20 @@ import tablero
 import funciones
 import variables
 
-turno = variables.turno
-tirada = variables.tirada
-vidas = variables.vidas
-
-M = variables.M
-C = variables.C
-F = variables.F
-
 ## ACTUALMENTE ESTOY PULIENDO LAS TIRADAS DE LOS JUGADORES
 # PROBLEMAS CON LA FUNCIÓN PINTA
 # PROBLEMAS CON EL CONTEO DE TIRADAS
 # PARECE QUE EL DUMMY FUNCIONA BIEN
 
 def partida(dif):
+    turno = variables.turno
+    tirada = variables.tirada
+    vidas = variables.vidas.copy()
+    print(vidas)
+    M = variables.M.copy()
+    C = variables.C.copy()
+    F = variables.F.copy()
+    
     while vidas[0] > 0 and vidas[1] > 0:
         print(f"Tirada número {tirada}, turno del jugador {turno%2 + 1}")
         # ESTA FUNCIÓN SE IMPLEMENTARÁ EN LA VERSIÓN DEFINITIVA Y COMPRENDERÁ 
@@ -99,6 +99,24 @@ def partida(dif):
                         print(C2[i][j], end = " ")
                     print("")"""
                 # Al ser el turno de la máquina, la tirada será aleatoria
+
+                
+                if dif == 0:
+                    turno, acierto =  funciones.dif0(M,C,F,vidas, turno)
+                        
+                elif dif == 1:
+                    print("Work in Progress")
+                    turno, acierto =  funciones.dif0(M,C,F,vidas, turno)
+
+                elif dif == 2:
+                    print("Work in Progress")
+                    turno, acierto =  funciones.dif0(M,C,F,vidas, turno)
+                
+                else :
+                    turno,acierto = funciones.dif3(M,C,F,vidas,turno)
+                
+                tirada += 1
+
                 """
                 match dif:
                     case 0:
@@ -113,7 +131,8 @@ def partida(dif):
                             turno,acierto = funciones.dif3(M,C,F,vidas,turno,tiradas)
 
                 """
-                turno, acierto =  funciones.dif0(M,C,F,vidas, turno)
+
+
                 """
                 x = random.randint(0,9)
                 y = random.randint(0,9)
@@ -141,6 +160,8 @@ def partida(dif):
                             print(f"Coordenada ({x},{y}): Tocado. Vuelve a tirar")
                 else:
                     print("Fuera del tablero o ya visitada, prueba otra combinación")"""
+            
+
     if vidas[0] == 0:
         print("Has perdido")
     else:
