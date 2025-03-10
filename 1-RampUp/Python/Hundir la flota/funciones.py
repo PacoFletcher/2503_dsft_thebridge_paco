@@ -1,5 +1,5 @@
 import random
-import variables
+#import variables
 """
 turno = variables.turno
 tirada = variables.tirada
@@ -10,6 +10,13 @@ C = variables.C
 F = variables.F
 
 """
+def entero(a):
+    try:
+        int(a)
+        return True
+    except ValueError: 
+        return False
+    
 
 def dentro(x,y):
     if 0 <= x < 10 and 0 <= y < 10:
@@ -35,20 +42,19 @@ def imprime_tablero(C):
         print("-"*43)
 
 
-def disparo(M,C,F,x,y,turno):
+def disparo(M,C,F,vidas,x,y,turno):
     t = (turno+1)%2
+    acierto = True
     if dentro(x,y) and C[turno][x][y] == 0:
         if M[t][x][y] == 'O':
             C[turno][x][y] = 'A'
             print(f"Coordenada ({x},{y}): Agua. Turno del otro jugador")
             turno += 1
             acierto = False
-            return turno, acierto
         else:
             C[turno][x][y] = 'T'
             k = (x,y)
             aux = 0
-            print("El valor t es: ", t)
             for i in range(len(F[t])):
                 if k in F[t][i].coord.keys():
                     F[t][i].coord[k] = True
@@ -57,17 +63,26 @@ def disparo(M,C,F,x,y,turno):
             if F[t][aux].vida == 0:
                 print(f"Coordenada ({x},{y}): Tocado y hundido. Vuelve a tirar")
                 
-                C[turno] = pinta(C,F[t][aux])
+                C[turno] = pinta(C,turno, F[t][aux])
             else:
                 print(f"Coordenada ({x},{y}): Tocado. Vuelve a tirar")
             vidas[t] -= 1
     else:
         print(f"Coordenada ({x},{y}) fuera del tablero o ya visitada, prueba otra combinación")
+    return turno, acierto
 
-def tira1(M,C,F,turno):
-    x = int(input("Introduce la primera coordenada de la tirada:"))
-    y = int(input("Introduce la segunda coordenada de la tirada:"))
-    turno, acierto = disparo(M,C,F,x,y,turno) 
+def tira1(M,C,F,vidas,turno):
+    ok = False
+    while not ok:
+        x = input("Introduce la primera coordenada de la tirada:")
+        y = input("Introduce la segunda coordenada de la tirada:")
+        if entero(x) and entero(y):
+            ok = True
+        else: 
+            print("Has introducido una entrada incorrecta, vuelve a probar")
+    x = int(x)
+    y = int(y)
+    turno, acierto = disparo(M,C,F,vidas,x,y,turno) 
     return turno, acierto
     """
     if funciones.dentro(x,y) and C1[x][y] == 0:
@@ -101,10 +116,12 @@ def tira1(M,C,F,turno):
 
 
 ### (Dummy) Todas las tiradas serán aleatorias
-"""
-def dif_0(C):
+def dif0(M,C,F,vidas, turno):
+    x = random.randint(0,9)
+    y = random.randint(0,9)
+    turno, acierto = disparo(M,C,F,vidas,x,y,turno)
+    return turno, acierto
 
-"""
 ### (Nivel 1) Las tiradas serán aleatorias, pero en caso de tocar
 ### un barco, las siguientes tiradas las hará en el entorno de la casilla
 ### hasta hundirlo 
@@ -117,27 +134,50 @@ def dif_1(C):
 ### Es decir, si toca un barco, en el mismo turno lo hundirá.
 
 """
-def dif_2(C):
-
+def dif_2(M,C,F,vidas, turno, sec, futuro):
+    if sec == False:
+        x = random.randint(0,9)
+        y = random.randint(0,9)
+        turno, acierto , sec = disparo(M,C,F,vidas,x,y,turno)
+    
+    else:
+        x = futuro[-1][0]
+        y = futuro[-1][1]        
+        turno, acierto, sec = disparo(M,C,F,vidas,x,y,turno)
+    if acierto:
+        for i in (-1,2,2):
+            if mira(x+i, y):
+                if M[turno][x+i][y] == 'B' and C[turno][x+i][y] == 0:
+                    futuro.append([x+i,y])
+            if mira(x,y+i):
+                if M[turno][x][y+i] == 'B' and C[turno][x][y+i] == 0:
+                    futuro.append([x,y+i])     
+    return turno, acierto
+        
 """
 
 ### (Nivel 3) Nivel (casi) imposible.
 ### La máquina accede a nuestro vector flota, por lo que en un solo turno hundirá todos nuestros barcos
 
 """
-def dif_3(C):
-
+def dif3(M,C,F,vidas,turno,tiradas):
+    x = tiradas[-1][0]
+    y = tiradas[-1][1]
+    tiradas.pop()
+    turno, acierto = disparo(M,C,F,,vidas,x,y,turno)
+    return turno, acierto
 """
 
-def pinta(C,b):
+def pinta(C, turno,b):
     for i in b.coord.keys():
         x = i[0]
         y = i[1]
         for j in range(-1,2):
             for k in range(-1,2):
                 if dentro(x-j,y-k):
-                    C[x-j][y-k] = "X"
-    return C
+                    C[turno][x-j][y-k] = "X"
+    if turno == 1:
+        return False
                 
 
 # Función reservada para las jugadas.

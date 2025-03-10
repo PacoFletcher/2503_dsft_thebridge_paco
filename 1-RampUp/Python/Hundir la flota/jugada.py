@@ -37,7 +37,7 @@ while vidas[0] > 0 and vidas[1] > 0:
                 for j in range(len(C1[i])):
                     print(C1[i][j], end = " ")
                 print("")"""
-            turno, acierto =  funciones.tira1(M,C,F, turno)
+            turno, acierto =  funciones.tira1(M,C,F,vidas, turno)
             tirada += 1
             """
             x = int(input("Introduce la primera coordenada de la tirada:"))
@@ -99,6 +99,22 @@ while vidas[0] > 0 and vidas[1] > 0:
                     print(C2[i][j], end = " ")
                 print("")"""
             # Al ser el turno de la máquina, la tirada será aleatoria
+            """
+            match dif:
+                case 0:
+                
+                case 1:
+                
+                case 2:
+                
+                case _:
+                    tiradas = F[0].coord.keys()
+                    while acierto and vidas[0] > 0
+                        turno,acierto = funciones.dif3(M,C,F,vidas,turno,tiradas)
+
+            """
+            turno, acierto =  funciones.dif0(M,C,F,vidas, turno)
+            """
             x = random.randint(0,9)
             y = random.randint(0,9)
             if funciones.dentro(x,y) and C[turno][x][y] == 0:
@@ -111,21 +127,21 @@ while vidas[0] > 0 and vidas[1] > 0:
                 else:
                     C[turno][x][y] = 'T'
                     vidas[0] -= 1
-                    t = (x,y)
+                    k = (x,y)
                     aux = 0
-                    for i in range(len(flota[turno])):
-                        if t in flota[(turno+1)%2][i].coord.keys():
-                            flota[(turno+1)%2][i].coord[t] = True
-                            flota[(turno+1)%2][i].vida -= 1
+                    for i in range(len(F[turno])):
+                        if k in F[(turno+1)%2][i].coord.keys():
+                            F[(turno+1)%2][i].coord[k] = True
+                            F[(turno+1)%2][i].vida -= 1
                             aux = i
-                    if flota[(turno+1)%2][aux].vida == 0:
+                    if F[(turno+1)%2][aux].vida == 0:
                         print(f"Coordenada ({x},{y}): Tocado y hundido. Vuelve a tirar")
-                        C[turno] = funciones.pinta(C,flota2[aux])
+                        C[turno] = funciones.pinta(C,turno, F[turno][aux])
                     else:
                         print(f"Coordenada ({x},{y}): Tocado. Vuelve a tirar")
             else:
-                print("Fuera del tablero o ya visitada, prueba otra combinación")
-if vidas1 == 0:
+                print("Fuera del tablero o ya visitada, prueba otra combinación")"""
+if vidas[0] == 0:
     print("Has perdido")
 else:
     print("¡Enhorabuena! \n¡Has ganado!")
