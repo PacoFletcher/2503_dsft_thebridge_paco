@@ -18,9 +18,10 @@ while True:
     if dif == 3:
         print("Haber elegido muerte")
     jugada.partida(int(dif))
-    
+    """
     otra = input("¿Quieres volver a jugar? ¿Sí o No?")
     otra = otra.lower()
     if otra != "sí" and otra != "si":
         break
+    """
 print("Hasta la próxima")

@@ -69,6 +69,7 @@ def disparo(M,C,F,vidas,x,y,turno):
             vidas[t] -= 1
     else:
         print(f"Coordenada ({x},{y}) fuera del tablero o ya visitada, prueba otra combinación")
+    
     return turno, acierto
 
 def tira1(M,C,F,vidas,turno):
@@ -125,10 +126,53 @@ def dif0(M,C,F,vidas, turno):
 ### (Nivel 1) Las tiradas serán aleatorias, pero en caso de tocar
 ### un barco, las siguientes tiradas las hará en el entorno de la casilla
 ### hasta hundirlo 
-"""
-def dif_1(C):
 
-"""
+def dif_1(M,C,F,vidas, turno, sec, futuro):
+    if sec == False:
+        x = random.randint(0,9)
+        y = random.randint(0,9)
+        turno, acierto = disparo(M,C,F,vidas,x,y,turno)
+        if acierto:
+            tupla = (x,y)
+            for n,i in enumerate(F[0]):
+                if tupla in i.coord.keys():
+                    if F[0][n].vida == 0:
+                        sec = False
+                        futuro = []
+                    else:
+                        sec = True
+                        for k in range(-1,1,2):
+                            if dentro(x+k,y): 
+                                if C[1][x+k][y] == 0:
+                                    futuro.append((x+k,y))
+                            if dentro(x,y+k): 
+                                if C[1][x][y+k] == 0:
+                                    futuro.append((x,y+k))
+    else:
+        t = futuro[-1]
+        futuro.pop()
+        x = t[0]
+        y = t[1]
+        turno, acierto = disparo(M,C,F,vidas,x,y,turno)
+        if acierto:
+            tupla = (x,y)
+            for n,i in enumerate(F[0]):
+                if tupla in i.coord.keys():
+                    if F[0][n].vida == 0:
+                        sec = False
+                        futuro = []
+                    else:
+                        sec = True
+                        for k in range(-1,1,2):
+                            for k in range(-1,1,2):
+                                if dentro(x+k,y):
+                                    if C[1][x+k][y] == 0:
+                                        futuro.append((x+k,y))
+                                if dentro(x,y+k): 
+                                    if C[1][x][y+k] == 0:
+                                        futuro.append((x,y+k))
+    return turno, acierto, sec
+    
 
 ### (Nivel 2) Similar al nivel 1, sólo que las próximas tiradas sólo las efectuará si sabe que hay un barco.
 ### Es decir, si toca un barco, en el mismo turno lo hundirá.
@@ -138,8 +182,20 @@ def dif_2(M,C,F,vidas, turno, sec, futuro):
     if sec == False:
         x = random.randint(0,9)
         y = random.randint(0,9)
-        turno, acierto , sec = disparo(M,C,F,vidas,x,y,turno)
-    
+        turno, acierto = disparo(M,C,F,vidas,x,y,turno)
+            if acierto:
+                tupla = (x,y)
+                for n,i in enumerate(F[0]):
+                    if t in i.coord:
+                        if F[0][n] == 0:
+                            sec = False
+                        else:
+                            sec = True
+                            for k in range(-1,1,2):
+                                if dentro(x+k,y):
+                                    futuro.append()
+                        
+                
     else:
         x = futuro[-1][0]
         y = futuro[-1][1]        
@@ -176,7 +232,8 @@ def pinta(C, turno,b):
         for j in range(-1,2):
             for k in range(-1,2):
                 if dentro(x-j,y-k):
-                    C[turno][x-j][y-k] = "X"
+                    if C[turno][x-j][y-k] != 'T':
+                        C[turno][x-j][y-k] = "A"
     return C[turno]
                 
 

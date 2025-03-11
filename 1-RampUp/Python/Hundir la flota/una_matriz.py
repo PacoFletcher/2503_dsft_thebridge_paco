@@ -1,6 +1,6 @@
 import funciones
 import random
-#import numpy as np
+
 
 class barco:
 
@@ -9,29 +9,49 @@ class barco:
         self.vidas = 0
         pass
 
+
+def imprime_tablero2(A,j,c):
+    for i in range(-1,10):
+        if i == -1:
+            print (" ", end = " | ")
+        else:
+            print(i, end = " | ")
+    print("")
+    print("-"*43)
+    for x in range(10):
+        for y in range(11):
+            if y == 0:
+                print(x, end  = " | ")
+            else:
+                print(A[x+10*j][y-1+10*c], end = " | ")
+        print("")
+        print("-"*43)
+
+
 def dentro(x,y):
     if 0 <= x < 10 and 0 <= y < 10:
         return True
     return False
 
-def mira(A,x,y):
-    for i in range(-1,2):
-            for j in range(-1,2):
-                if dentro(x-j,y-i):
-                    if A[x-j][y-i] != 0:
-                        return False
+def mira2(A,j,x1,y1):
+    for a in range(-1,2):
+        for b in range(-1,2):
+            if dentro(x1-a,y1-b):
+                print(x1-a,y1-b)
+                if A[x1-a + 10*j][y1-b] != 0:
+                    return False
     return True
-def valido(A,l,v,x,y):
+def valido2(A,l,v,j,x1,y1):
     # Analizaremos celda a celda.
     # Si el barco está en posición vertical, modificaremos la coordenada x 
     if v == True:
         for i in range(0,l):
-            if not mira(A,x+i,y):
+            if not mira2(A,j,x1+i,y1):
                 return False
     # Si el barco está en posición horizontal, modificaremos la coordenada y    
     else:
         for i in range(0,l):
-            if not mira(A,x ,y+i):
+            if not mira2(A,j,x1 ,y1+i):
                 return False
         
     return True
@@ -52,7 +72,7 @@ def set_mapa2(A, l, B, j):
             # posiciones a nuestro barco definitivamente.
             # Si valido detectara alguna casilla conflictiva, se volverían a generar 
             # dos coordenadas aleatorias hasta dar con una combinación factible.
-            if valido(A,l,v,x+ 10*j,y):
+            if valido2(A,l,v,j,x,y):
                 break
         # Una vez validadas las cordenadas (x,y), procedemos a:
         # 1. Ubicar el barco en nuestro mapa
@@ -69,7 +89,7 @@ def set_mapa2(A, l, B, j):
         while True:
             x = random.randint(0,9)
             y = random.randint(0,9-l+1)
-            if valido(A,l,v,x+ 10*j,y):
+            if valido2(A,l,v,j,x,y):
                 break
         for i in range(0,l):
             A[x + j*10][y+i] = 'B'
@@ -85,23 +105,10 @@ for j in range(0,2):
         for i in range(0,5-l):
             b = barco()
             B.append(b)
-            v = random.randint(0,1)
             set_mapa2(A,l,B,j)
+    imprime_tablero2(A,j,0)
 
 
 
-print(A[:10][:10])
 
-funciones.imprime_tablero(A)
 
-for i in range(0,10):
-    for j in range(0,10):
-        print(A[i][j], end = " ")
-    print("")
-
-print("-"*100)
-
-for i in range(10,20):
-    for j in range(0,10):
-        print(A[i][j], end = " ")
-    print("")

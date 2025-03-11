@@ -12,11 +12,13 @@ def partida(dif):
     turno = variables.turno
     tirada = variables.tirada
     vidas = variables.vidas.copy()
-    print(vidas)
     M = variables.M.copy()
     C = variables.C.copy()
     F = variables.F.copy()
     
+
+    futuro = []
+    sec = False
     while vidas[0] > 0 and vidas[1] > 0:
         print(f"Tirada número {tirada}, turno del jugador {turno%2 + 1}")
         # ESTA FUNCIÓN SE IMPLEMENTARÁ EN LA VERSIÓN DEFINITIVA Y COMPRENDERÁ 
@@ -91,7 +93,7 @@ def partida(dif):
                     funciones.turno23() 
             """
             acierto = True
-            futuro = []
+            
             while acierto and vidas[0] > 0:
                 funciones.imprime_tablero(C[turno])
                 """for i in range(len(C2)):
@@ -106,7 +108,8 @@ def partida(dif):
                         
                 elif dif == 1:
                     print("Work in Progress")
-                    turno, acierto =  funciones.dif0(M,C,F,vidas, turno)
+                    turno, acierto, sec = funciones.dif_1(M,C,F,vidas, turno, sec, futuro)
+                    #turno, acierto =  funciones.dif0(M,C,F,vidas, turno)
 
                 elif dif == 2:
                     print("Work in Progress")
