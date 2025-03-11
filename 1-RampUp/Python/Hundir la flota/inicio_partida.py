@@ -3,6 +3,7 @@ import variables
 import funciones
 
 while True:
+
     print("¡Bienvenido al juego de hundir la flota!")
     print("Antes de comenzar, debes seleccinar la dificultad de tu contrincante")
     while True:
@@ -15,8 +16,6 @@ while True:
             break
         else:
             print("Error, introduce un número entre el 0 y el 3")
-    if dif == 3:
-        print("Haber elegido muerte")
     jugada.partida(int(dif))
     """
     otra = input("¿Quieres volver a jugar? ¿Sí o No?")
@@ -24,4 +23,5 @@ while True:
     if otra != "sí" and otra != "si":
         break
     """
+    
 print("Hasta la próxima")

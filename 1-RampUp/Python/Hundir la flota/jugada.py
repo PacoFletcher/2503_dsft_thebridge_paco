@@ -12,10 +12,10 @@ def partida(dif):
     turno = variables.turno
     tirada = variables.tirada
     vidas = variables.vidas.copy()
-    M = variables.M.copy()
-    C = variables.C.copy()
-    F = variables.F.copy()
-    
+    M = variables.M
+    C = variables.C
+    F = variables.F
+    print(C)
 
     futuro = []
     sec = False
@@ -104,19 +104,18 @@ def partida(dif):
 
                 
                 if dif == 0:
-                    turno, acierto =  funciones.dif0(M,C,F,vidas, turno)
+                    turno, acierto =  funciones.dif_0(M,C,F,vidas, turno)
                         
                 elif dif == 1:
-                    print("Work in Progress")
+                    #print("Work in Progress")
                     turno, acierto, sec = funciones.dif_1(M,C,F,vidas, turno, sec, futuro)
                     #turno, acierto =  funciones.dif0(M,C,F,vidas, turno)
 
                 elif dif == 2:
-                    print("Work in Progress")
-                    turno, acierto =  funciones.dif0(M,C,F,vidas, turno)
+                    turno, acierto, sec =  funciones.dif_2(M,C,F,vidas, turno, sec, futuro)
                 
                 else :
-                    turno,acierto = funciones.dif3(M,C,F,vidas,turno)
+                    turno,acierto = funciones.dif_3(M,C,F,vidas,turno)
                 
                 tirada += 1
 

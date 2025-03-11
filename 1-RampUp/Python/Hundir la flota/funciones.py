@@ -68,7 +68,8 @@ def disparo(M,C,F,vidas,x,y,turno):
                 print(f"Coordenada ({x},{y}): Tocado. Vuelve a tirar")
             vidas[t] -= 1
     else:
-        print(f"Coordenada ({x},{y}) fuera del tablero o ya visitada, prueba otra combinación")
+        if turno == 0:
+            print(f"Coordenada ({x},{y}) fuera del tablero o ya visitada, prueba otra combinación")
     
     return turno, acierto
 
@@ -117,7 +118,7 @@ def tira1(M,C,F,vidas,turno):
 
 
 ### (Dummy) Todas las tiradas serán aleatorias
-def dif0(M,C,F,vidas, turno):
+def dif_0(M,C,F,vidas, turno):
     x = random.randint(0,9)
     y = random.randint(0,9)
     turno, acierto = disparo(M,C,F,vidas,x,y,turno)
@@ -128,7 +129,7 @@ def dif0(M,C,F,vidas, turno):
 ### hasta hundirlo 
 
 def dif_1(M,C,F,vidas, turno, sec, futuro):
-    if sec == False:
+    if not sec:
         x = random.randint(0,9)
         y = random.randint(0,9)
         turno, acierto = disparo(M,C,F,vidas,x,y,turno)
@@ -155,9 +156,8 @@ def dif_1(M,C,F,vidas, turno, sec, futuro):
         y = t[1]
         turno, acierto = disparo(M,C,F,vidas,x,y,turno)
         if acierto:
-            tupla = (x,y)
             for n,i in enumerate(F[0]):
-                if tupla in i.coord.keys():
+                if t in i.coord.keys():
                     if F[0][n].vida == 0:
                         sec = False
                         futuro = []
@@ -177,45 +177,43 @@ def dif_1(M,C,F,vidas, turno, sec, futuro):
 ### (Nivel 2) Similar al nivel 1, sólo que las próximas tiradas sólo las efectuará si sabe que hay un barco.
 ### Es decir, si toca un barco, en el mismo turno lo hundirá.
 
-"""
+
 def dif_2(M,C,F,vidas, turno, sec, futuro):
     if sec == False:
         x = random.randint(0,9)
         y = random.randint(0,9)
         turno, acierto = disparo(M,C,F,vidas,x,y,turno)
-            if acierto:
-                tupla = (x,y)
-                for n,i in enumerate(F[0]):
-                    if t in i.coord:
-                        if F[0][n] == 0:
-                            sec = False
-                        else:
-                            sec = True
-                            for k in range(-1,1,2):
-                                if dentro(x+k,y):
-                                    futuro.append()
-                        
+        if acierto:
+            tupla = (x,y)
+            for n,i in enumerate(F[0]):
+                if tupla in i.coord:
+                    if F[0][n].vida == 0:
+                        sec = False
+                    else:
+                        sec = True
+                        for k in F[0][n].coord.keys():
+                            if F[0][n].coord[k] == False:
+                                futuro.append(k)
                 
     else:
-        x = futuro[-1][0]
-        y = futuro[-1][1]        
-        turno, acierto, sec = disparo(M,C,F,vidas,x,y,turno)
-    if acierto:
-        for i in (-1,2,2):
-            if mira(x+i, y):
-                if M[turno][x+i][y] == 'B' and C[turno][x+i][y] == 0:
-                    futuro.append([x+i,y])
-            if mira(x,y+i):
-                if M[turno][x][y+i] == 'B' and C[turno][x][y+i] == 0:
-                    futuro.append([x,y+i])     
-    return turno, acierto
+        t = futuro[-1]
+        futuro.pop()
+        x = t[0]
+        y = t[1]
+        turno, acierto = disparo(M,C,F,vidas,x,y,turno)
+        for n,i in enumerate(F[0]):
+            if t in i.coord.keys():
+                if F[0][n].vida == 0:
+                    sec = False
+                    futuro = []
+    return turno, acierto, sec
         
-"""
+
 
 ### (Nivel 3) Nivel (casi) imposible.
 ### La máquina accede a nuestro vector flota, por lo que en un solo turno hundirá todos nuestros barcos
 
-def dif3(M,C,F,vidas,turno):
+def dif_3(M,C,F,vidas,turno):
     
     for i in F[0]:
         for j in i.coord.keys():

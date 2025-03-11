@@ -14,7 +14,7 @@ class barco:
     def __init__(self):
         self.coord = {}
         self.vida = 0
-
+"""
 class jugador:
 
     def __init__(self):
@@ -22,10 +22,10 @@ class jugador:
         self.flota = []
         self.mapa = []
         self.comprueba = []
-
+"""
 
 # Creamos dos matrices, M1 y M2, que corresponderán a los mapas de cada jugador y una auxiliar para hacer las modificaciones
-M = [['O' for i in range(10)] for i in range(10)]
+#M = [['O' for i in range(10)] for i in range(10)]
 M1 = [['O' for i in range(10)] for i in range(10)]
 M2 = [['O' for i in range(10)] for i in range(10)]
 
@@ -173,7 +173,7 @@ for l in range(4,0,-1):
             for k in range(len(M1[i])):
                 print(M1[i][k], end = " ")
             print("")"""
-
+"""
 for i in flota1:
     print(i.vida, i.coord.items())
 
@@ -182,7 +182,7 @@ for i in range(len(M1)):
     for j in range(len(M1[i])):
         print(M1[i][j], end = " ")
     print("")
-
+"""
 # Reinicializamos la matriz auxiliar para completar el segundo mapa
 # A = [['O' for i in range(10)] for i in range(10)]
 
@@ -214,13 +214,15 @@ for l in range(4,0,-1):
 
 # Como esta información corresponde al segundo jugador (la máquina)
 # no lo mostraremos en la versión definitiva
+
+"""
+
 for i in flota2:
     print(i.vida, i.coord.items())
-
 # print(flota)
 for i in range(len(M2)):
     for j in range(len(M2[i])):
         print(M2[i][j], end = " ")
     print("")
-
-funciones.imprime_tablero(M2)
+"""
+# funciones.imprime_tablero(M2)
