@@ -5,12 +5,14 @@ turno = 0
 tirada = 1
 vidas = [20,20]
 
-os.system('python tablero.py')
+os.system('tablero.py')
+
+#exec(open("tablero.py").read())
 
 
-M = [tablero.M1.copy(), tablero.M2.copy()]
+P = [tablero.M1.copy(), tablero.M2.copy()]
 
-C = [tablero.C1.copy(), tablero.C2.copy()]
+Q = [tablero.C1.copy(), tablero.C2.copy()]
 
-F = [tablero.flota1.copy(),tablero.flota2.copy()]
+R = [tablero.flota1.copy(),tablero.flota2.copy()]
 

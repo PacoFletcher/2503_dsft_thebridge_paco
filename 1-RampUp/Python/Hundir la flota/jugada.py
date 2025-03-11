@@ -1,4 +1,5 @@
 import random
+import os
 import tablero
 import funciones
 import variables
@@ -9,13 +10,13 @@ import variables
 # PARECE QUE EL DUMMY FUNCIONA BIEN
 
 def partida(dif):
-    turno = variables.turno
-    tirada = variables.tirada
-    vidas = variables.vidas.copy()
-    M = variables.M
-    C = variables.C
-    F = variables.F
-    print(C)
+    os.system('varialbes.py')
+    turno = 0
+    tirada = 0
+    vidas = [20,20]
+    M = variables.P
+    C = variables.Q
+    F = variables.R
 
     futuro = []
     sec = False
