@@ -236,7 +236,7 @@ def valido(M,x,y,l,v):
             if not mira(M,x+i,y):
                 return False
     # Si el barco está en posición horizontal, modificaremos la coordenada y    
-    if v == False:
+    else:
         for i in range(0,l):
             if not mira(M,x,y+i):
                 return False
