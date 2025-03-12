@@ -128,6 +128,42 @@ def dif_0(M,C,F,vidas, turno):
 ### un barco, las siguientes tiradas las hará en el entorno de la casilla
 ### hasta hundirlo 
 
+"""
+MEJORA DE DIF_1
+    if not sec and acierto:
+        futuro.append((x,y))
+        a = x-1
+        b = y
+        if dentro(a,b):
+            if C[a][b] == 0:
+                futuro.append('N')
+        a = x+1
+        b = y
+        if dentro(a,b):
+            if C[a][b] == 0:
+                futuro.append('S')
+        a = x
+        b = y-1
+        if dentro(a,b):
+            if C[a][b] == 0:
+                futuro.append('O')
+        a = x
+        b = y+1
+        if dentro(a,b):
+            if C[a][b] == 0:
+                futuro.append('E')
+            
+    if sec:
+        mov = futuro[-1]
+
+        if mov == "N":
+            
+            
+"""
+
+
+
+
 def dif_1(M,C,F,vidas, turno, sec, futuro):
     if not sec:
         x = random.randint(0,9)
@@ -142,7 +178,7 @@ def dif_1(M,C,F,vidas, turno, sec, futuro):
                         futuro = []
                     else:
                         sec = True
-                        for k in range(-1,1,2):
+                        for k in range(-1,2,2):
                             if dentro(x+k,y): 
                                 if C[1][x+k][y] == 0:
                                     futuro.append((x+k,y))
@@ -163,14 +199,13 @@ def dif_1(M,C,F,vidas, turno, sec, futuro):
                         futuro = []
                     else:
                         sec = True
-                        for k in range(-1,1,2):
-                            for k in range(-1,1,2):
-                                if dentro(x+k,y):
-                                    if C[1][x+k][y] == 0:
-                                        futuro.append((x+k,y))
-                                if dentro(x,y+k): 
-                                    if C[1][x][y+k] == 0:
-                                        futuro.append((x,y+k))
+                        for k in range(-1,2,2):
+                            if dentro(x+k,y):
+                                if C[1][x+k][y] == 0:
+                                    futuro.append((x+k,y))
+                            if dentro(x,y+k): 
+                                if C[1][x][y+k] == 0:
+                                    futuro.append((x,y+k))
     return turno, acierto, sec
     
 

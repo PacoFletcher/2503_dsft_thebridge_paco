@@ -9,7 +9,9 @@ import variables
 # PROBLEMAS CON EL CONTEO DE TIRADAS
 # PARECE QUE EL DUMMY FUNCIONA BIEN
 
-def partida(dif):
+def partida(dif,turno, tirada, vidas, M, C,F):
+
+    """    
     os.system('varialbes.py')
     turno = 0
     tirada = 0
@@ -17,23 +19,20 @@ def partida(dif):
     M = variables.P
     C = variables.Q
     F = variables.R
-
+    """
     futuro = []
     sec = False
     while vidas[0] > 0 and vidas[1] > 0:
-        print(f"Tirada número {tirada}, turno del jugador {turno%2 + 1}")
-        # ESTA FUNCIÓN SE IMPLEMENTARÁ EN LA VERSIÓN DEFINITIVA Y COMPRENDERÁ 
-        # EL CÓDIGO QUE ESTÁ DENTRO DEL BUCLE
-        ###############################
-        # jugada(turno)
-        ###############################
         turno = turno%2
+        #print(f"Tirada número {tirada}, turno del jugador {turno%2 + 1}")
+
         if turno == 0:
             # funciones.turno1()
             acierto = True
             while acierto and vidas[1] > 0:
                 # Antes de cada tirada, imprimimos por pantalla la matriz 
                 # que almacena los resultados de las tiradas para facilitar la jugabilidad
+                print(f"Tirada número {tirada}, turno del jugador {turno%2 + 1}")
                 funciones.imprime_tablero(C[turno])
                 
                 """for i in range(len(C1)):
@@ -96,6 +95,7 @@ def partida(dif):
             acierto = True
             
             while acierto and vidas[0] > 0:
+                print(f"Tirada número {tirada}, turno del jugador {turno%2 + 1}")
                 funciones.imprime_tablero(C[turno])
                 """for i in range(len(C2)):
                     for j in range(len(C2[i])):
