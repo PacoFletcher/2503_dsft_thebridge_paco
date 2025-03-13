@@ -318,6 +318,7 @@ def hmira(M,x,y):
 # cumplen los requisitos establecidos:
 # 1. Ninguna de ellas está ocupada por otro barco
 # 2. Ninguna celda vecina está ocupada por otro barco
+
 def valido(M,x,y,l,v):
     # Analizaremos celda a celda.
     # Si el barco está en posición vertical, modificaremos la coordenada x 

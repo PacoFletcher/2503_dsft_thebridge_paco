@@ -163,7 +163,7 @@ for l in range(4,0,-1):
         flota1.append(b)
         # Ubicamos nuestro barco en el mapa del jugador:
         funciones.set_mapa(M1,l,flota1)
-
+        
         # Implementamos este sistema de control que nos permite comprobar que
         # el programa se ejecuta correctamente 
         # una vez testeado, conviene comentar este bloque de código para 
@@ -183,6 +183,8 @@ for i in range(len(M1)):
         print(M1[i][j], end = " ")
     print("")
 """
+print("Mapa del jugador 1:")
+# funciones.imprime_tablero(M1)
 # Reinicializamos la matriz auxiliar para completar el segundo mapa
 # A = [['O' for i in range(10)] for i in range(10)]
 
