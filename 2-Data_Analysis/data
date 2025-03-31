@@ -77,19 +77,24 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 58,
+   "execution_count": 1,
    "metadata": {},
    "outputs": [
     {
-     "ename": "FileNotFoundError",
-     "evalue": "[Errno 2] No such file or directory: 'data/dog_breeds.txt'",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[31m---------------------------------------------------------------------------\u001b[39m",
-      "\u001b[31mFileNotFoundError\u001b[39m                         Traceback (most recent call last)",
-      "\u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[58]\u001b[39m\u001b[32m, line 1\u001b[39m\n\u001b[32m----> \u001b[39m\u001b[32m1\u001b[39m \u001b[38;5;28;01mwith\u001b[39;00m \u001b[38;5;28;43mopen\u001b[39;49m\u001b[43m(\u001b[49m\u001b[33;43m'\u001b[39;49m\u001b[33;43mdata/dog_breeds.txt\u001b[39;49m\u001b[33;43m'\u001b[39;49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[33;43m'\u001b[39;49m\u001b[33;43mr\u001b[39;49m\u001b[33;43m'\u001b[39;49m\u001b[43m)\u001b[49m \u001b[38;5;28;01mas\u001b[39;00m open_file:\n\u001b[32m      2\u001b[39m     all_text = open_file.read()\n\u001b[32m      3\u001b[39m     \u001b[38;5;28mprint\u001b[39m(\u001b[38;5;28mtype\u001b[39m(all_text))\n",
-      "\u001b[36mFile \u001b[39m\u001b[32m~\\AppData\\Roaming\\Python\\Python311\\site-packages\\IPython\\core\\interactiveshell.py:325\u001b[39m, in \u001b[36m_modified_open\u001b[39m\u001b[34m(file, *args, **kwargs)\u001b[39m\n\u001b[32m    318\u001b[39m \u001b[38;5;28;01mif\u001b[39;00m file \u001b[38;5;129;01min\u001b[39;00m {\u001b[32m0\u001b[39m, \u001b[32m1\u001b[39m, \u001b[32m2\u001b[39m}:\n\u001b[32m    319\u001b[39m     \u001b[38;5;28;01mraise\u001b[39;00m \u001b[38;5;167;01mValueError\u001b[39;00m(\n\u001b[32m    320\u001b[39m         \u001b[33mf\u001b[39m\u001b[33m\"\u001b[39m\u001b[33mIPython won\u001b[39m\u001b[33m'\u001b[39m\u001b[33mt let you open fd=\u001b[39m\u001b[38;5;132;01m{\u001b[39;00mfile\u001b[38;5;132;01m}\u001b[39;00m\u001b[33m by default \u001b[39m\u001b[33m\"\u001b[39m\n\u001b[32m    321\u001b[39m         \u001b[33m\"\u001b[39m\u001b[33mas it is likely to crash IPython. If you know what you are doing, \u001b[39m\u001b[33m\"\u001b[39m\n\u001b[32m    322\u001b[39m         \u001b[33m\"\u001b[39m\u001b[33myou can use builtins\u001b[39m\u001b[33m'\u001b[39m\u001b[33m open.\u001b[39m\u001b[33m\"\u001b[39m\n\u001b[32m    323\u001b[39m     )\n\u001b[32m--> \u001b[39m\u001b[32m325\u001b[39m \u001b[38;5;28;01mreturn\u001b[39;00m \u001b[43mio_open\u001b[49m\u001b[43m(\u001b[49m\u001b[43mfile\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43m*\u001b[49m\u001b[43margs\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43m*\u001b[49m\u001b[43m*\u001b[49m\u001b[43mkwargs\u001b[49m\u001b[43m)\u001b[49m\n",
-      "\u001b[31mFileNotFoundError\u001b[39m: [Errno 2] No such file or directory: 'data/dog_breeds.txt'"
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'str'>\n",
+      "Pug\n",
+      "Jack Russell Terrier\n",
+      "English Springer Spaniel\n",
+      "German Shepherd\n",
+      "Staffordshire Bull Terrier\n",
+      "Cavalier King Charles Spaniel\n",
+      "Golden Retriever\n",
+      "West Highland White Terrier\n",
+      "Boxer\n",
+      "Border Terrier\n"
      ]
     }
    ],
@@ -112,7 +117,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 2,
    "metadata": {},
    "outputs": [
     {
@@ -133,7 +138,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 3,
    "metadata": {},
    "outputs": [
     {
@@ -163,7 +168,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 4,
    "metadata": {},
    "outputs": [
     {
@@ -200,7 +205,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 5,
    "metadata": {},
    "outputs": [
     {
@@ -241,7 +246,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 6,
    "metadata": {},
    "outputs": [
     {
@@ -270,7 +275,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 7,
    "metadata": {},
    "outputs": [
     {
@@ -308,7 +313,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 8,
    "metadata": {},
    "outputs": [
     {
@@ -372,7 +377,7 @@
         }
        ],
        "conversionMethod": "pd.DataFrame",
-       "ref": "3b0397b1-66c3-4f90-96e3-66ebbf022bf4",
+       "ref": "d26e95e9-00f3-4c65-86ff-38f8629dde6a",
        "rows": [
         [
          "0",
@@ -562,7 +567,7 @@
        "4           1             2  28/08/2005  1125180000  "
       ]
      },
-     "execution_count": 52,
+     "execution_count": 8,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -589,7 +594,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 9,
    "metadata": {
     "collapsed": true,
     "jupyter": {
@@ -659,7 +664,7 @@
         }
        ],
        "conversionMethod": "pd.DataFrame",
-       "ref": "e9d8c260-2bb9-49c0-8a43-11aefa44a79c",
+       "ref": "6c701970-3b40-4aff-a962-3506a4c3165d",
        "rows": [
         [
          "0",
@@ -849,7 +854,7 @@
        "4           1             2  28/08/2005  1125180000  "
       ]
      },
-     "execution_count": 53,
+     "execution_count": 9,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -871,7 +876,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 10,
    "metadata": {},
    "outputs": [
     {
@@ -883,7 +888,7 @@
        "      dtype='int64', length=4940)"
       ]
      },
-     "execution_count": 54,
+     "execution_count": 10,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -904,7 +909,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 11,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -914,7 +919,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 12,
    "metadata": {},
    "outputs": [
     {
@@ -978,7 +983,7 @@
         }
        ],
        "conversionMethod": "pd.DataFrame",
-       "ref": "ea8bd835-73b0-4535-b2fe-bab28d4a0ac0",
+       "ref": "c8da92c3-d526-44e6-b174-db3b1dacbdba",
        "rows": [
         [
          "0",
@@ -1168,7 +1173,7 @@
        "4             2  28/08/2005  1125180000          26205  "
       ]
      },
-     "execution_count": 56,
+     "execution_count": 12,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -1187,7 +1192,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 13,
    "metadata": {
     "collapsed": true,
     "jupyter": {
@@ -1257,7 +1262,7 @@
         }
        ],
        "conversionMethod": "pd.DataFrame",
-       "ref": "13e8491e-7cef-4e37-8f49-a93cb4cead34",
+       "ref": "74fe4107-e26e-4bb5-a281-62392c152285",
        "rows": [
         [
          "0",
@@ -2125,7 +2130,7 @@
        "[4940 rows x 10 columns]"
       ]
      },
-     "execution_count": 57,
+     "execution_count": 13,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -2137,7 +2142,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 14,
    "metadata": {
     "collapsed": true,
     "jupyter": {
@@ -2207,7 +2212,7 @@
         }
        ],
        "conversionMethod": "pd.DataFrame",
-       "ref": "ad7c6f45-bc81-4f74-9fbb-258ce9bdd077",
+       "ref": "2008795f-1b1e-4466-866c-c1175c661e68",
        "rows": [
         [
          "1",
@@ -2397,7 +2402,7 @@
        "5             2  28/08/2005  1125180000          26205  "
       ]
      },
-     "execution_count": 58,
+     "execution_count": 14,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -2410,7 +2415,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 15,
    "metadata": {},
    "outputs": [
     {
@@ -2434,7 +2439,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 16,
    "metadata": {},
    "outputs": [
     {
@@ -2498,7 +2503,7 @@
         }
        ],
        "conversionMethod": "pd.DataFrame",
-       "ref": "e4e87c87-44c3-445b-ad08-741572c488ae",
+       "ref": "85a406d7-fb27-457c-8259-95e9b1973928",
        "rows": [
         [
          "1",
@@ -2604,7 +2609,7 @@
        "2             0  27/08/2005  1125093600          26202  "
       ]
      },
-     "execution_count": 60,
+     "execution_count": 16,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -2623,7 +2628,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 17,
    "metadata": {},
    "outputs": [
     {
@@ -2634,7 +2639,7 @@
        "      dtype='object')"
       ]
      },
-     "execution_count": 61,
+     "execution_count": 17,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -2645,7 +2650,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 18,
    "metadata": {
     "collapsed": true,
     "jupyter": {
@@ -2715,7 +2720,7 @@
         }
        ],
        "conversionMethod": "pd.DataFrame",
-       "ref": "41f23827-c7cd-4a53-8bff-92f08da39c79",
+       "ref": "deb8dfb5-fe74-4b6f-9c04-9c2ba4496d82",
        "rows": [
         [
          "0",
@@ -2905,7 +2910,7 @@
        "4            1                2  28/08/2005  1125180000  "
       ]
      },
-     "execution_count": 62,
+     "execution_count": 18,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -2929,7 +2934,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 19,
    "metadata": {
     "collapsed": true,
     "jupyter": {
@@ -2954,7 +2959,7 @@
        "dtype: object"
       ]
      },
-     "execution_count": 63,
+     "execution_count": 19,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -2965,7 +2970,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 20,
    "metadata": {},
    "outputs": [
     {
@@ -2994,7 +2999,7 @@
         }
        ],
        "conversionMethod": "pd.DataFrame",
-       "ref": "cb83f95f-5982-4ff5-8688-df72957b2911",
+       "ref": "8510067d-271b-4fe7-8f83-2b3d53716376",
        "rows": [
         [
          "0",
@@ -3100,7 +3105,7 @@
        "4      26205         1               Cadiz"
       ]
      },
-     "execution_count": 64,
+     "execution_count": 20,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -3117,7 +3122,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 21,
    "metadata": {},
    "outputs": [
     {
@@ -3129,7 +3134,7 @@
        "dtype: object"
       ]
      },
-     "execution_count": 65,
+     "execution_count": 21,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -3149,7 +3154,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 22,
    "metadata": {},
    "outputs": [
     {
@@ -3168,7 +3173,7 @@
         }
        ],
        "conversionMethod": "pd.DataFrame",
-       "ref": "6035d421-154a-47e1-b174-15b412942e94",
+       "ref": "32cd370b-a244-4c66-95c0-85eecb0bc21b",
        "rows": [
         [
          "0",
@@ -3252,7 +3257,7 @@
        "4  26205;2005-06;1;1;Cadiz;Real Madrid;1;2;28/08/...                                           "
       ]
      },
-     "execution_count": 66,
+     "execution_count": 22,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -3272,7 +3277,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 23,
    "metadata": {
     "collapsed": true,
     "jupyter": {
@@ -3342,7 +3347,7 @@
         }
        ],
        "conversionMethod": "pd.DataFrame",
-       "ref": "80c045c7-7531-4124-839f-06e901900eff",
+       "ref": "94b2c866-e19e-400c-aac3-5996758dd9d2",
        "rows": [
         [
          "0",
@@ -3532,7 +3537,7 @@
        "4           1             2  28/08/2005  1125180000  "
       ]
      },
-     "execution_count": 67,
+     "execution_count": 23,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -3552,7 +3557,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 24,
    "metadata": {
     "collapsed": true,
     "jupyter": {
@@ -3577,7 +3582,7 @@
         }
        ],
        "conversionMethod": "pd.DataFrame",
-       "ref": "ba2a8eca-1d26-4b86-9e9f-90ae04a0a21b",
+       "ref": "9c7d885e-f168-45f8-94b2-6437f07eee78",
        "rows": [
         [
          "0",
@@ -3661,7 +3666,7 @@
        "4  26205~2005-06~1~1~Cadiz~Real Madrid~1~2~28/08/...                                           "
       ]
      },
-     "execution_count": 68,
+     "execution_count": 24,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -3673,7 +3678,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 25,
    "metadata": {},
    "outputs": [
     {
@@ -3737,7 +3742,7 @@
         }
        ],
        "conversionMethod": "pd.DataFrame",
-       "ref": "ea601fe3-6230-4bdb-a98c-05eae83af6f5",
+       "ref": "1870837c-e6f8-4e28-b56c-2a52d3771e97",
        "rows": [
         [
          "0",
@@ -3927,7 +3932,7 @@
        "4           1             2  28/08/2005  1125180000  "
       ]
      },
-     "execution_count": 69,
+     "execution_count": 25,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -3939,7 +3944,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 26,
    "metadata": {},
    "outputs": [
     {
@@ -4003,7 +4008,7 @@
         }
        ],
        "conversionMethod": "pd.DataFrame",
-       "ref": "dac412c2-35ba-4d39-abe5-bbb575ddeadd",
+       "ref": "5b5ae199-dd9c-4385-aebe-1a080ff6f478",
        "rows": [
         [
          "0",
@@ -4871,7 +4876,7 @@
        "[4940 rows x 10 columns]"
       ]
      },
-     "execution_count": 70,
+     "execution_count": 26,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -4892,7 +4897,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 27,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -4901,7 +4906,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 28,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -4941,7 +4946,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 29,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -4950,7 +4955,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 30,
    "metadata": {},
    "outputs": [
     {
@@ -4958,11 +4963,11 @@
      "evalue": "'charmap' codec can't decode byte 0x8f in position 164: character maps to <undefined>",
      "output_type": "error",
      "traceback": [
-      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[1;31mUnicodeDecodeError\u001b[0m                        Traceback (most recent call last)",
-      "Cell \u001b[1;32mIn[74], line 2\u001b[0m\n\u001b[0;32m      1\u001b[0m \u001b[38;5;28;01mwith\u001b[39;00m \u001b[38;5;28mopen\u001b[39m(\u001b[38;5;124m'\u001b[39m\u001b[38;5;124mdata/laliga.xlsx\u001b[39m\u001b[38;5;124m'\u001b[39m, \u001b[38;5;124m'\u001b[39m\u001b[38;5;124mr\u001b[39m\u001b[38;5;124m'\u001b[39m) \u001b[38;5;28;01mas\u001b[39;00m open_file:\n\u001b[1;32m----> 2\u001b[0m     all_text \u001b[38;5;241m=\u001b[39m \u001b[43mopen_file\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mread\u001b[49m\u001b[43m(\u001b[49m\u001b[43m)\u001b[49m\n\u001b[0;32m      3\u001b[0m     \u001b[38;5;28mprint\u001b[39m(\u001b[38;5;28mtype\u001b[39m(all_text))\n\u001b[0;32m      4\u001b[0m     \u001b[38;5;28mprint\u001b[39m(all_text)\n",
-      "File \u001b[1;32mc:\\Program Files\\Python311\\Lib\\encodings\\cp1252.py:23\u001b[0m, in \u001b[0;36mIncrementalDecoder.decode\u001b[1;34m(self, input, final)\u001b[0m\n\u001b[0;32m     22\u001b[0m \u001b[38;5;28;01mdef\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;21mdecode\u001b[39m(\u001b[38;5;28mself\u001b[39m, \u001b[38;5;28minput\u001b[39m, final\u001b[38;5;241m=\u001b[39m\u001b[38;5;28;01mFalse\u001b[39;00m):\n\u001b[1;32m---> 23\u001b[0m     \u001b[38;5;28;01mreturn\u001b[39;00m codecs\u001b[38;5;241m.\u001b[39mcharmap_decode(\u001b[38;5;28minput\u001b[39m,\u001b[38;5;28mself\u001b[39m\u001b[38;5;241m.\u001b[39merrors,decoding_table)[\u001b[38;5;241m0\u001b[39m]\n",
-      "\u001b[1;31mUnicodeDecodeError\u001b[0m: 'charmap' codec can't decode byte 0x8f in position 164: character maps to <undefined>"
+      "\u001b[31m---------------------------------------------------------------------------\u001b[39m",
+      "\u001b[31mUnicodeDecodeError\u001b[39m                        Traceback (most recent call last)",
+      "\u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[30]\u001b[39m\u001b[32m, line 2\u001b[39m\n\u001b[32m      1\u001b[39m \u001b[38;5;28;01mwith\u001b[39;00m \u001b[38;5;28mopen\u001b[39m(\u001b[33m'\u001b[39m\u001b[33mdata/laliga.xlsx\u001b[39m\u001b[33m'\u001b[39m, \u001b[33m'\u001b[39m\u001b[33mr\u001b[39m\u001b[33m'\u001b[39m) \u001b[38;5;28;01mas\u001b[39;00m open_file:\n\u001b[32m----> \u001b[39m\u001b[32m2\u001b[39m     all_text = \u001b[43mopen_file\u001b[49m\u001b[43m.\u001b[49m\u001b[43mread\u001b[49m\u001b[43m(\u001b[49m\u001b[43m)\u001b[49m\n\u001b[32m      3\u001b[39m     \u001b[38;5;28mprint\u001b[39m(\u001b[38;5;28mtype\u001b[39m(all_text))\n\u001b[32m      4\u001b[39m     \u001b[38;5;28mprint\u001b[39m(all_text)\n",
+      "\u001b[36mFile \u001b[39m\u001b[32mc:\\Program Files\\Python311\\Lib\\encodings\\cp1252.py:23\u001b[39m, in \u001b[36mIncrementalDecoder.decode\u001b[39m\u001b[34m(self, input, final)\u001b[39m\n\u001b[32m     22\u001b[39m \u001b[38;5;28;01mdef\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[34mdecode\u001b[39m(\u001b[38;5;28mself\u001b[39m, \u001b[38;5;28minput\u001b[39m, final=\u001b[38;5;28;01mFalse\u001b[39;00m):\n\u001b[32m---> \u001b[39m\u001b[32m23\u001b[39m     \u001b[38;5;28;01mreturn\u001b[39;00m codecs.charmap_decode(\u001b[38;5;28minput\u001b[39m,\u001b[38;5;28mself\u001b[39m.errors,decoding_table)[\u001b[32m0\u001b[39m]\n",
+      "\u001b[31mUnicodeDecodeError\u001b[39m: 'charmap' codec can't decode byte 0x8f in position 164: character maps to <undefined>"
      ]
     }
    ],
@@ -9383,23 +9388,12 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 33,
    "metadata": {},
-   "outputs": [
-    {
-     "data": {
-      "text/plain": [
-       "'c:\\\\Users\\\\hegoi\\\\TheBridge\\\\2409_dsft_thebridge_core\\\\2-Data_Analysis\\\\3-Sources\\\\Archivos\\\\Teoría\\\\data'"
-      ]
-     },
-     "execution_count": 142,
-     "metadata": {},
-     "output_type": "execute_result"
-    }
-   ],
+   "outputs": [],
    "source": [
     "import os\n",
-    "os.getcwd()"
+    "path = os.getcwd()"
    ]
   },
   {
@@ -9412,27 +9406,27 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 35,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "c:\\Users\\hegoi\\TheBridge\\2409_dsft_thebridge_core\\2-Data_Analysis\\3-Sources\\Archivos\n",
-      "['Practica', 'Teoría']\n"
+      "c:\\Users\\pacof\\Data_Science\\The Bridge\\2503_dsft_thebridge_paco\\2-Data_Analysis\\3-Sources\\Archivos\\Teoría\n",
+      "['data', 'img', 'Lectura_Escritura.ipynb']\n"
      ]
     }
    ],
    "source": [
-    "os.chdir('c:\\\\Users\\\\hegoi\\\\TheBridge\\\\2409_dsft_thebridge_core\\\\2-Data_Analysis\\\\3-Sources\\\\Archivos\\\\')\n",
+    "os.chdir(path)\n",
     "print(os.getcwd())\n",
     "print(os.listdir())\n"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 36,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -9441,15 +9435,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 37,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "c:\\Users\\hegoi\\TheBridge\\2409_dsft_thebridge_core\\2-Data_Analysis\\3-Sources\n",
-      "['Archivos', 'Web', 'Webscrapping']\n"
+      "c:\\Users\\pacof\\Data_Science\\The Bridge\\2503_dsft_thebridge_paco\\2-Data_Analysis\\3-Sources\\Archivos\n",
+      "['Practica', 'Teoría']\n"
      ]
     }
    ],
@@ -9468,7 +9462,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 38,
    "metadata": {},
    "outputs": [
     {
@@ -9477,7 +9471,7 @@
        "'C:\\\\path\\\\directory\\\\some_file.txt'"
       ]
      },
-     "execution_count": 146,
+     "execution_count": 38,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -9735,16 +9729,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 39,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "'c:\\\\Users\\\\hegoi\\\\TheBridge\\\\2503_dsft_thebridge\\\\2-Data_Analysis\\\\3-Sources\\\\Archivos\\\\Teoría\\\\data'"
+       "'c:\\\\Users\\\\pacof\\\\Data_Science\\\\The Bridge\\\\2503_dsft_thebridge_paco\\\\2-Data_Analysis\\\\3-Sources\\\\Archivos'"
       ]
      },
-     "execution_count": 170,
+     "execution_count": 39,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -9755,7 +9749,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 45,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -9764,7 +9758,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 46,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -9773,7 +9767,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 47,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -9787,7 +9781,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 48,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -9797,32 +9791,42 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 52,
    "metadata": {},
    "outputs": [
     {
-     "ename": "Error",
-     "evalue": "Destination path 'data\\fichero.txt' already exists",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[1;31mError\u001b[0m                                     Traceback (most recent call last)",
-      "Cell \u001b[1;32mIn[175], line 2\u001b[0m\n\u001b[0;32m      1\u001b[0m \u001b[38;5;28;01mimport\u001b[39;00m\u001b[38;5;250m \u001b[39m\u001b[38;5;21;01mshutil\u001b[39;00m\n\u001b[1;32m----> 2\u001b[0m \u001b[43mshutil\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mmove\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[38;5;124;43mfichero.txt\u001b[39;49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[38;5;124;43mdata\u001b[39;49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[43m)\u001b[49m\n",
-      "File \u001b[1;32mc:\\Program Files\\Python311\\Lib\\shutil.py:851\u001b[0m, in \u001b[0;36mmove\u001b[1;34m(src, dst, copy_function)\u001b[0m\n\u001b[0;32m    848\u001b[0m     real_dst \u001b[38;5;241m=\u001b[39m os\u001b[38;5;241m.\u001b[39mpath\u001b[38;5;241m.\u001b[39mjoin(dst, _basename(src))\n\u001b[0;32m    850\u001b[0m     \u001b[38;5;28;01mif\u001b[39;00m os\u001b[38;5;241m.\u001b[39mpath\u001b[38;5;241m.\u001b[39mexists(real_dst):\n\u001b[1;32m--> 851\u001b[0m         \u001b[38;5;28;01mraise\u001b[39;00m Error(\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mDestination path \u001b[39m\u001b[38;5;124m'\u001b[39m\u001b[38;5;132;01m%s\u001b[39;00m\u001b[38;5;124m'\u001b[39m\u001b[38;5;124m already exists\u001b[39m\u001b[38;5;124m\"\u001b[39m \u001b[38;5;241m%\u001b[39m real_dst)\n\u001b[0;32m    852\u001b[0m \u001b[38;5;28;01mtry\u001b[39;00m:\n\u001b[0;32m    853\u001b[0m     os\u001b[38;5;241m.\u001b[39mrename(src, real_dst)\n",
-      "\u001b[1;31mError\u001b[0m: Destination path 'data\\fichero.txt' already exists"
-     ]
+     "data": {
+      "text/plain": [
+       "'data'"
+      ]
+     },
+     "execution_count": 52,
+     "metadata": {},
+     "output_type": "execute_result"
     }
    ],
    "source": [
     "import shutil\n",
-    "shutil.move(\"fichero.txt\", \"data\")"
+    "shutil.move(\"C:\\\\Users\\\\pacof\\\\Data_Science\\\\The Bridge\\\\2503_dsft_thebridge_paco\\\\2-Data_Analysis\\\\3-Sources\\\\Archivos\\\\Teoría\\\\Lectura_Escritura.ipynb\", \"data\")"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 53,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "ename": "FileNotFoundError",
+     "evalue": "[WinError 3] El sistema no puede encontrar la ruta especificada: 'data/fichero.txt'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[31m---------------------------------------------------------------------------\u001b[39m",
+      "\u001b[31mFileNotFoundError\u001b[39m                         Traceback (most recent call last)",
+      "\u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[53]\u001b[39m\u001b[32m, line 1\u001b[39m\n\u001b[32m----> \u001b[39m\u001b[32m1\u001b[39m \u001b[43mos\u001b[49m\u001b[43m.\u001b[49m\u001b[43mremove\u001b[49m\u001b[43m(\u001b[49m\u001b[33;43m'\u001b[39;49m\u001b[33;43mdata/fichero.txt\u001b[39;49m\u001b[33;43m'\u001b[39;49m\u001b[43m)\u001b[49m\n",
+      "\u001b[31mFileNotFoundError\u001b[39m: [WinError 3] El sistema no puede encontrar la ruta especificada: 'data/fichero.txt'"
+     ]
+    }
+   ],
    "source": [
     "os.remove('data/fichero.txt')"
    ]
